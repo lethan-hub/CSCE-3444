@@ -1,0 +1,67 @@
+#!/usr/bin/env python3
+
+# Valid users
+users = {
+    "kevin": "password",
+    "haider": "password",
+    "lethan": "password",
+    "parth": "password"
+}
+
+def login() -> str:
+    print("Welcome back to to the Health Tracker App ❤️")
+    print("Please Login ")
+    while True:
+        username = input("Username: ").strip().lower()
+        password = input("Password: ").strip()
+
+        if username in users and users[username] == password:
+            print(f"Login Successful!\n")
+            return username
+        else:
+            print("Username or password are incorrect. Please try again! \n")
+
+
+def workouts():
+    print("\n[Workouts]")
+    print("👉  This is where workout routines would go.\n")
+
+
+def meal_planning():
+    print("\n[Meal Planning]")
+    print("👉  This is where meal plans would go.\n")
+
+
+def personal_health():
+    print("\n[Personal Health]")
+    print("👉  This is where health metrics & tips would go.\n")
+
+
+def main_menu(username: str):
+    
+    while True:
+        print(f"\nHi, {username.capitalize()}!")
+        print("==== Home Screen ====")
+        print("1. Workouts 🏃")
+        print("2. Meal Planning 🍅")
+        print("3. Personal Health 📏")
+        print("4. Quit")
+
+        choice = input("Select an option (1-4): ").strip()
+
+        if choice == "1":
+            workouts()
+        elif choice == "2":
+            meal_planning()
+        elif choice == "3":
+            personal_health()
+        elif choice == "4":
+            print("👋 Goodbye — stay healthy!\n")
+            break
+        else:
+            print("Invalid selection. Please try again.")
+
+
+if __name__ == "__main__":
+    user = login()
+    main_menu(user)
