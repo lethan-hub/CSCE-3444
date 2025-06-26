@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+from personal_health import PersonalHealth
+
 # Valid users
 users = {
     "kevin": "password",
@@ -35,6 +37,23 @@ def meal_planning():
 def personal_health():
     print("\n[Personal Health]")
     print("👉  This is where health metrics & tips would go.\n")
+    try:
+        name = input("Enter your name: ")
+        age = int(input("Enter your age: "))
+        gender = input("Enter your gender: ")
+        height_cm = float(input("Enter your height: "))
+        weight_kg = float(input("Enter your weight: "))
+
+        profile = PersonalHealth(name,age,gender,height_cm,weight_kg)
+
+        print("Personal Health Overview")
+        for key,value in profile.display_profile().items():
+            print(f"{key} : {value}")
+
+    except ValueError:
+        print("Invalid input. Please enter valid inputs for the required sections.")
+
+    input("Press Enter to return to Main Menu")
 
 
 def main_menu(username: str):
