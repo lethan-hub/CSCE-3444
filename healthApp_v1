@@ -47,7 +47,7 @@ def personal_health():
         profile = PersonalHealth(name,age,gender,height_cm,weight_kg)
 
         print("Personal Health Overview")
-        for key,value in profile.display_profile().items():
+        for key,value in profile.profile().items():
             print(f"{key} : {value}")
 
     except ValueError:
