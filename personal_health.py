@@ -25,10 +25,10 @@ class PersonalHealth:
 
     def update_weight(self, new_weight_kg):
       self.weight_kg = new_weight_kg
-      self.bmi = self.caclulate_bmi()
+      self.bmi = self.calculate_bmi()
       self.status = self.health_status()
 
-    def profle(self):
+    def profile(self):
       return {
           "Name" : self.name,
           "Age" : self.age,
