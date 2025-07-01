@@ -23,18 +23,18 @@ class PersonalHealth:
     else:
       return "Obese"
 
-    def update_weight(self, new_weight_kg):
-      self.weight_kg = new_weight_kg
-      self.bmi = self.calculate_bmi()
-      self.status = self.health_status()
+  def update_weight(self, new_weight_kg):
+    self.weight_kg = new_weight_kg
+    self.bmi = self.calculate_bmi()
+    self.status = self.health_status()
 
-    def profile(self):
-      return {
-          "Name" : self.name,
-          "Age" : self.age,
-          "Gender" : self.gender,
-          "Height (cm)" : self.height_cm,
-          "Weight (kg)" : self.weight_kg,
-          "BMI" : self.bmi,
-          "Health Status" : self.status
+  def profile(self):
+    return {
+        "Name" : self.name,
+        "Age" : self.age,
+        "Gender" : self.gender,
+        "Height (cm)" : self.height_cm,
+        "Weight (kg)" : self.weight_kg,
+        "BMI" : self.bmi,
+        "Health Status" : self.status
       }
