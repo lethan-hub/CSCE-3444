@@ -2,6 +2,7 @@
 
 from personal_health import PersonalHealth
 from workouts import workouts
+from meals import meals
 
 # Valid users
 users = {
@@ -32,8 +33,9 @@ def workouts_placeholder():
 
 
 def meal_planning():
-    print("\n[Meal Planning]")
-    print("👉  This is where meal plans would go.\n")
+    from getpass import getuser
+    username = getuser().lower()
+    meals(username)
 
 
 def personal_health():

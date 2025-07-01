@@ -1,0 +1,24 @@
+{
+    "parth": {
+        "2025-07-01": [
+            {
+                "time": "09:00 AM",
+                "food": "oatmeal",
+                "calories": 160.0,
+                "protein_g": 6.0,
+                "carbs_g": 28.0,
+                "fats_g": 5.0
+            }
+        ],
+        "2025-06-30": [
+            {
+                "time": "08:00 PM",
+                "food": "chicken and rice",
+                "calories": 265.0,
+                "protein_g": 34.0,
+                "carbs_g": 11.0,
+                "fats_g": 9.0
+            }
+        ]
+    }
+}
