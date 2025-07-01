@@ -6,7 +6,7 @@ class PersonalHealth:
     self.height_cm = height_cm
     self.weight_kg = weight_kg
     self.bmi = self.calculate_bmi()
-    self.status = self.get_health_status()
+    self.status = self.health_status()
 
   def calculate_bmi(self):
     height_m = self.height_cm / 100
@@ -25,10 +25,10 @@ class PersonalHealth:
 
     def update_weight(self, new_weight_kg):
       self.weight_kg = new_weight_kg
-      self.bmi = self.caclulate_bmi()
-      self.status = self.get_health_status()
+      self.bmi = self.calculate_bmi()
+      self.status = self.health_status()
 
-    def profle(self):
+    def profile(self):
       return {
           "Name" : self.name,
           "Age" : self.age,
