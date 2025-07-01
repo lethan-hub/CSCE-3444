@@ -32,9 +32,7 @@ def workouts_placeholder():
     
 
 
-def meal_planning():
-    from getpass import getuser
-    username = getuser().lower()
+def meal_planning(username):
     meals(username)
 
 
@@ -75,7 +73,7 @@ def main_menu(username: str):
         if choice == "1":
             workouts(username)
         elif choice == "2":
-            meal_planning()
+            meal_planning(username)
         elif choice == "3":
             personal_health()
         elif choice == "4":

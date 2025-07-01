@@ -51,10 +51,13 @@ def meals(username):
                 data[username][date] = []
             print(f"\nLogging meal for {date}.")
             meal = {}
-            # Require AM/PM in time
             while True:
                 meal_time = input("Time of meal (e.g., 07:30 AM): ").strip()
                 if meal_time.lower().endswith('am') or meal_time.lower().endswith('pm'):
+                    if meal_time.lower().endswith('am'):
+                        meal_time = meal_time[:-2] + 'AM'
+                    else:
+                        meal_time = meal_time[:-2] + 'PM'
                     break
                 print("Please include AM or PM in the time (e.g., 07:30 AM or 12:15 pm). Try again.")
             meal['time'] = meal_time
