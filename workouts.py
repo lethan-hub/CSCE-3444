@@ -9,7 +9,7 @@ def load_workouts():
         with open(WORKOUTS_FILE, "r") as file:
             return json.load(file)
     except FileNotFoundError:
-        return []
+        return {}
 
 # Save workouts to file
 def save_workouts(workouts):
@@ -28,8 +28,9 @@ def workouts(username):
     if username not in workouts_data:
         workouts_data[username] = {}
     if today not in workouts_data[username]:
-        workouts_data[username][today] = {}
+        workouts_data[username][today] = []
     print("\n[Workouts]")
+
     while True:
         print("1. Log new workout")
         print("2. View today's workout")

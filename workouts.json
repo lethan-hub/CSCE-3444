@@ -1,0 +1,24 @@
+{
+    "haider": {
+        "2025-06-30": [
+            {
+                "category": "Cardio",
+                "type": "Running",
+                "duration_minutes": 25,
+                "steps": 4000
+            },
+            {
+                "category": "Cardio",
+                "type": "Stairmaster",
+                "duration_minutes": 25,
+                "steps": 3250
+            },
+            {
+                "category": "Cardio",
+                "type": "Cycling",
+                "duration_minutes": 25,
+                "steps": 0
+            }
+        ]
+    }
+}
