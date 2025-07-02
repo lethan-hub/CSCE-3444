@@ -10,3 +10,19 @@ Kevin Diaz
 Lethan Nguyen
 Parth Patel
 
+Features - 
+- User Authentication
+- Workout Logging
+- Categorized by Cardio/Strength
+- Step Estimates
+- Personal Health Tracking
+- Gathers and calulates user health stats(BMI)
+- Meal Planning
+- Meal Tracking - Logging meals with calories and macros
+
+Structure - 
+- healthApp.py
+- personal_health.py
+- workouts.py
+- workouts.json
+- meals.py
