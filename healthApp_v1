@@ -36,7 +36,7 @@ def meal_planning(username):
     meals(username)
 
 
-def personal_health():
+def personal_health(username):
     print("\n[Personal Health]")
     print("👉  This is where health metrics & tips would go.\n")
     try:
