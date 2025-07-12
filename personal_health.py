@@ -1,6 +1,5 @@
 import os
 import json
-
 from datetime import datetime
 
 Health_file = "personal_health_info.json"
@@ -16,7 +15,7 @@ def load_personalhealth_info():
 # Updates profiles and saves it to the .json file
 def save_profile(data):
   with open(Health_file, "w") as f:
-            json.dump(data,f,indent = 4)
+          json.dump(data,f,indent = 4)
 
 # Previous profiles are shown
 def old_profile(username):
@@ -29,28 +28,28 @@ def add_health(username,name,age,gender,height_cm,weight_kg):
     bmi =  round(weight_kg / (height_m ** 2), 2)
 # Health Status based on BMI
     if bmi < 18.5:
-      return "Underweight"
+      status =  "Underweight"
     elif 18.5 <= bmi < 24.9:
-      return "Normal weight"
+      status =  "Normal weight"
     elif 25<= bmi < 29.9:
-      return "Overweight"
+      status = "Overweight"
     else:
-      return "Obese"
+      status = "Obese"
 
 # Shows current time
   date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
  entry = {
-        "Name" : self.name,
-        "Age" : self.age,
-        "Gender" : self.gender,
-        "Height (cm)" : self.height_cm,
-        "Weight (kg)" : self.weight_kg,
-        "BMI" : self.bmi,
-        "Health Status" : self.status,
-        "Date" : self.date_time
+        "Name" : name,
+        "Age" : age,
+        "Gender" : .gender,
+        "Height (cm)" : height_cm,
+        "Weight (kg)" : weight_kg,
+        "BMI" : bmi,
+        "Health Status" : status,
+        "Date" : date_time
       }
 # Loads, saves, and updates data
-data = load_personhealth_info()
+data = load_personalhealth_info()
 data.setdefault(username,[]).append(entry)
 save_profile(data)
