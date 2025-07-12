@@ -1,19 +1,33 @@
-class PersonalHealth:
-  def __init__(self,name,age,gender,height_cm,weight_kg):
-    self.name = name
-    self.age = age
-    self.gender = gender
-    self.height_cm = height_cm
-    self.weight_kg = weight_kg
-    self.bmi = self.calculate_bmi()
-    self.status = self.health_status()
+import os
+import json
 
-  def calculate_bmi(self):
+from datetime import datetime
+
+Health_file = "personal_health_info.json"
+
+# Loads existing profiles or empty structures
+def load_personalhealth_info():
+  try:
+    with open(Health_file, "r") as file:
+      return json.load(file)
+  except FileNotFoundError:
+    return{}
+
+# Updates profiles
+def save_profile(data):
+  with open(Health_file, "w) as f:
+            json.dump(data,f,indent = 4)
+
+# Previous profiles
+def old_profile(username):
+  return load_personalhealth_info().get(username,[])
+
+# Adds new health info for profile
+def add_health(username,age,gender,height_cm,weight_kg):
+# Calculates the BMI
     height_m = self.height_cm / 100
     return round(self.weight_kg / (height_m ** 2), 2)
-  
-  def health_status(self):
-    bmi = self.bmi
+# Health Status based on BMI
     if bmi < 18.5:
       return "Underweight"
     elif 18.5 <= bmi < 24.9:
@@ -23,13 +37,7 @@ class PersonalHealth:
     else:
       return "Obese"
 
-  def update_weight(self, new_weight_kg):
-    self.weight_kg = new_weight_kg
-    self.bmi = self.calculate_bmi()
-    self.status = self.health_status()
-
-  def profile(self):
-    return {
+ entry = {
         "Name" : self.name,
         "Age" : self.age,
         "Gender" : self.gender,
@@ -37,4 +45,9 @@ class PersonalHealth:
         "Weight (kg)" : self.weight_kg,
         "BMI" : self.bmi,
         "Health Status" : self.status
+        "Date" : self.date_time
       }
+
+data = load_data()
+data.setdefault(username,[]).append(entry)
+save_data(data)
