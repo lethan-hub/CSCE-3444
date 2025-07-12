@@ -76,7 +76,7 @@ def main_menu(username: str):
         elif choice == "2":
             meal_planning(username)
         elif choice == "3":
-            personal_health()
+            personal_health(username)
         elif choice == "4":
             print("👋 Goodbye — stay healthy!\n")
             break
