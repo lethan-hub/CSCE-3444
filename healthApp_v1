@@ -46,7 +46,8 @@ def personal_health():
         height_cm = float(input("Enter your height(in cm): "))
         weight_kg = float(input("Enter your weight(in kg): "))
 
-        profile = PersonalHealth(name,age,gender,height_cm,weight_kg)
+        profile = PersonalHealth(name,age,gender,height_cm,weight_kg, username=username)
+        profile.save() # Saves to the .json file
 
         print("Personal Health Overview")
         for key,value in profile.profile().items():
