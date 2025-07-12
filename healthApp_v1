@@ -2,7 +2,7 @@
 
 from personal_health import PersonalHealth
 from workouts import workouts
-from meals import meals
+from src.meals import meals
 from user_auth import login_user, register_user
 
 def prompt_login_or_register():
