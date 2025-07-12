@@ -3,28 +3,27 @@
 from personal_health import PersonalHealth
 from workouts import workouts
 from meals import meals
+from user_auth import login_user, register_user
 
-# Valid users
-users = {
-    "kevin": "password",
-    "haider": "password",
-    "lethan": "password",
-    "parth": "password"
-}
-
-def login() -> str:
-    print("Welcome back to to the Health Tracker App ❤️")
-    print("Please Login ")
+def prompt_login_or_register():
     while True:
-        username = input("Username: ").strip().lower()
-        password = input("Password: ").strip()
-
-        if username in users and users[username] == password:
-            print(f"Login Successful!\n")
-            return username
+        choice = input("Do you want to (1) Login or (2) Register? ").strip()
+        if choice == "1":
+            username = input("Username: ").strip()
+            password = input("Password: ").strip()
+            user = login_user(username, password)
+            if user:
+                print("Login successful!\n")
+                return user
+            else:
+                print("Invalid credentials. Try again.\n")
+        elif choice == "2":
+            username = input("Choose a username: ").strip()
+            password = input("Choose a password: ").strip()
+            email = input("Enter your email: ").strip()
+            print(register_user(username, password, email))
         else:
-            print("Username or password are incorrect. Please try again! \n")
-
+            print("Invalid input. Enter 1 or 2.\n")
 
 def workouts_placeholder():
     print("\n[Workouts]")
@@ -85,5 +84,6 @@ def main_menu(username: str):
 
 
 if __name__ == "__main__":
-    user = login()
+    user = prompt_login_or_register()
     main_menu(user)
+
