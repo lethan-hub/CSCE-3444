@@ -25,8 +25,8 @@ def old_profile(username):
 # Adds new health info for profile
 def add_health(username,name,age,gender,height_cm,weight_kg):
 # Calculates the BMI
-    height_m = self.height_cm / 100
-    bmi =  round(self.weight_kg / (height_m ** 2), 2)
+    height_m = height_cm / 100
+    bmi =  round(weight_kg / (height_m ** 2), 2)
 # Health Status based on BMI
     if bmi < 18.5:
       return "Underweight"
@@ -38,7 +38,7 @@ def add_health(username,name,age,gender,height_cm,weight_kg):
       return "Obese"
 
 # Shows current time
-date_time = datetime.now().strftime("%Y-%m-%d %H: %M : % S")
+  date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
  entry = {
         "Name" : self.name,
@@ -47,10 +47,10 @@ date_time = datetime.now().strftime("%Y-%m-%d %H: %M : % S")
         "Height (cm)" : self.height_cm,
         "Weight (kg)" : self.weight_kg,
         "BMI" : self.bmi,
-        "Health Status" : self.status
+        "Health Status" : self.status,
         "Date" : self.date_time
       }
 # Loads, saves, and updates data
-data = load_data()
+data = load_personhealth_info()
 data.setdefault(username,[]).append(entry)
-save_data(data)
+save_profile(data)
