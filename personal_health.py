@@ -13,20 +13,20 @@ def load_personalhealth_info():
   except FileNotFoundError:
     return{}
 
-# Updates profiles
+# Updates profiles and saves it to the .json file
 def save_profile(data):
-  with open(Health_file, "w) as f:
+  with open(Health_file, "w") as f:
             json.dump(data,f,indent = 4)
 
-# Previous profiles
+# Previous profiles are shown
 def old_profile(username):
   return load_personalhealth_info().get(username,[])
 
 # Adds new health info for profile
-def add_health(username,age,gender,height_cm,weight_kg):
+def add_health(username,name,age,gender,height_cm,weight_kg):
 # Calculates the BMI
     height_m = self.height_cm / 100
-    return round(self.weight_kg / (height_m ** 2), 2)
+    bmi =  round(self.weight_kg / (height_m ** 2), 2)
 # Health Status based on BMI
     if bmi < 18.5:
       return "Underweight"
@@ -36,6 +36,9 @@ def add_health(username,age,gender,height_cm,weight_kg):
       return "Overweight"
     else:
       return "Obese"
+
+# Shows current time
+date_time = datetime.now().strftime("%Y-%m-%d %H: %M : % S")
 
  entry = {
         "Name" : self.name,
@@ -47,7 +50,7 @@ def add_health(username,age,gender,height_cm,weight_kg):
         "Health Status" : self.status
         "Date" : self.date_time
       }
-
+# Loads, saves, and updates data
 data = load_data()
 data.setdefault(username,[]).append(entry)
 save_data(data)
