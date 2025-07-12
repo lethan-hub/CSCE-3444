@@ -40,6 +40,7 @@ class PersonalHealth:
             return "Obese"
 
     def save(self):
+      try:
         print(f"Saving profile for user {self.username}...")
         data = load_personalhealth_info()
         entry = {
@@ -55,6 +56,8 @@ class PersonalHealth:
         data.setdefault(self.username, []).append(entry)
         save_profile(data)
         print("Profile saved.")
+      except Exception as e:
+        print(f"Error while saving profile: {e}")
 # Saves health profile
     def profile(self):
         return {
