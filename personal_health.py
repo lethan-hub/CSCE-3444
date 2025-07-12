@@ -39,7 +39,7 @@ def add_health(username,name,age,gender,height_cm,weight_kg):
 # Shows current time
     date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-   entry = {
+    entry = {
           "Name" : name,
           "Age" : age,
           "Gender" : gender,
@@ -50,6 +50,6 @@ def add_health(username,name,age,gender,height_cm,weight_kg):
           "Date" : date_time
         }
 # Loads, saves, and updates data
-  data = load_personalhealth_info()
-  data.setdefault(username,[]).append(entry)
-  save_profile(data)
+    data = load_personalhealth_info()
+    data.setdefault(username,[]).append(entry)
+    save_profile(data)
