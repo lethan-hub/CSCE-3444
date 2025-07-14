@@ -16,9 +16,19 @@ def load_personalhealth_info():
 def save_profile(data):
   with open(Health_file, "w") as f:
       json.dump(data,f,indent = 4)
+
+  
 # Class for the Personal Health
 class PersonalHealth:
     def __init__(self, name, age, gender, height_cm, weight_kg, username):
+      # Checks the values and will raise a ValueError if it does not meet requirements
+      if not(0 < height_cm < 300):
+        raise ValueError("Height must be 0 - 300 cm.")
+      if not (0 < weight_kg < 500):
+        raise ValueError("Weight must be 0 - 500 kg.")
+      if not (0 < age < 150):
+        raise ValueError("Age must be 0 - 150.")
+      
         self.name = name
         self.age = age
         self.gender = gender
@@ -58,6 +68,16 @@ class PersonalHealth:
         print("Profile saved.")
       except Exception as e:
         print(f"Error while saving profile: {e}")
+
+  def update_weight(self, new_weight_kg):
+  if new_weight_kg <= 0:
+    raise ValueError("Weight must be above 0.")
+  self.weight_kg = new_weight_kg
+  self.bmi = round(weight_kg / ((height_cm / 100) ** 2), 2) # Calculates BMI
+  self.status = self.get_health_status() # Gives BMI based on user input
+  self.recorded_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S") # Gives date and time
+  print(f"Weight has been updated to {new_weight_kg} kg, Your BMI is now : {self.bmi}, status : {self.status}")
+    
 # Saves health profile
     def profile(self):
         return {
@@ -70,3 +90,8 @@ class PersonalHealth:
             "Health Status": self.status,
             "Date": self.recorded_at
         }
+
+
+def health_history(username):
+  data = load_personalhealth_info()
+  return data.get(username, [])
