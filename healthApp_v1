@@ -37,26 +37,87 @@ def meal_planning(username):
 
 def personal_health(username):
     print("\n[Personal Health]")
-    print("👉  This is where health metrics & tips would go.\n")
-    try:
-        name = input("Enter your name: ")
-        age = int(input("Enter your age: "))
-        gender = input("Enter your gender: ")
-        height_cm = float(input("Enter your height(in cm): "))
-        weight_kg = float(input("Enter your weight(in kg): "))
+    def personal_health(username):
+    from personal_health import get_user_health_history 
 
-        profile = PersonalHealth(name,age,gender,height_cm,weight_kg, username=username)
-        profile.save() # Saves to the .json file
+    while True:
+# Gives options (1-4) to decide what option the user wants
+        print("\n[Personal Health]")
+        print("1. Create New Profile")
+        print("2. Update Weight")
+        print("3. View Health History")
+        print("4. Return to Main Menu")
 
-        print("Personal Health Overview")
-        for key,value in profile.profile().items():
-            print(f"{key} : {value}")
+# User input to choose option
+        choice = input("Select an option (1-4): ").strip()
 
-    except ValueError:
-        print("Invalid input. Please enter valid inputs for the required sections.")
+# If-else statements to determine what is chosen
+# Creates new profile
+        if choice == "1":
+            try:
+                name = input("Enter your name: ")
+                age = int(input("Enter your age: "))
+                gender = input("Enter your gender: ")
+                height_cm = float(input("Enter your height (in cm): "))
+                weight_kg = float(input("Enter your weight (in kg): "))
 
-    input("Press Enter to return to Main Menu")
+                profile = PersonalHealth(name, age, gender, height_cm, weight_kg, username=username)
+                profile.save() # Saves to the .json file
 
+# Prints that the profile has been created and it outputs the information inputted
+                print("\n Personal Health Profile Created:")
+                for key, value in profile.profile().items():
+                    print(f"{key} : {value}")
+            except ValueError as ve:
+                print(f"Please enter a valid input: {ve}")
+
+# Updates Weight
+        elif choice == "2":
+            try:
+                history = get_user_health_history(username) # Retrieves past health profile
+                if not history: 
+                    print("No profile found. Please create a profile.")
+                    continue # Checks if there is a old profile, if not returns back to the options
+
+# Uses the information from past profile to update weight
+                latest = history[-1]
+                profile = PersonalHealth(
+                    latest["Name"],
+                    latest["Age"],
+                    latest["Gender"],
+                    latest["Height (cm)"],
+                    latest["Weight (kg)"],  # Weight changes to new weight
+                    username
+                )
+
+                new_weight = float(input("Enter your new weight (in kg): "))
+                profile.update_weight(new_weight)
+                profile.save()
+# Weight, BMI, and status updates
+                print("\n Weight updated and new BMI calculated:")
+                for key, value in profile.profile().items():
+                    print(f"{key} : {value}")
+            except ValueError as ve:
+                print(f" Invalid input: {ve}")
+            except Exception as e:
+                print(f" Error updating weight: {e}")
+
+# Views Health History
+        elif choice == "3":
+            history = get_user_health_history(username)
+            if not history:
+                print("No records found.")
+            else:
+                print(f"\n Health History for {username}:")
+                for i, record in enumerate(history, start=1):
+                    print(f"\nEntry {i}:")
+                    for key, value in record.items():
+                        print(f"{key}: {value}")
+# Exit to Main Menu
+        elif choice == "4":
+            break
+        else:
+            print("Please choose between 1 and 4.")
 
 def main_menu(username: str):
     
