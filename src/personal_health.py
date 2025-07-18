@@ -71,7 +71,7 @@ class PersonalHealth:
 
   def update_weight(self, new_weight_kg):
       if new_weight_kg <= 0:
-        raise ValueError("Weight must be above 0.")
+          raise ValueError("Weight must be above 0.")
       self.weight_kg = new_weight_kg
       self.bmi = round(weight_kg / ((height_cm / 100) ** 2), 2) # Calculates BMI
       self.status = self.get_health_status() # Gives BMI based on user input
