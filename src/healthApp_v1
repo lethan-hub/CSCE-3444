@@ -36,7 +36,7 @@ def meal_planning(username):
 
 
 def personal_health(username):
- print("\n[Personal Health]")
+    print("\n[Personal Health]")
 
     while True:
 # Gives options (1-4) to decide what option the user wants
