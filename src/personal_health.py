@@ -92,7 +92,7 @@ class PersonalHealth:
         }
 
 
-def health_history(username):
+def get_health_history(username):
   data = load_personalhealth_info()
   return data.get(username, [])
 
