@@ -95,3 +95,10 @@ class PersonalHealth:
 def health_history(username):
   data = load_personalhealth_info()
   return data.get(username, [])
+
+
+from personal_health_menu import personal_health
+
+if __name__ == "__main__":
+  username = input("Enter your username: ").strip()
+  personal_health(username)
