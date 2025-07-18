@@ -1,6 +1,6 @@
 # !/usr/bin/env python3
 
-from personal_health import PersonalHealth
+from personal_health import PersonalHealth, import get_user_health_history 
 from workouts import workouts
 from src.meals import meals
 from user_auth import login_user, register_user
@@ -37,7 +37,6 @@ def meal_planning(username):
 
 def personal_health(username):
  print("\n[Personal Health]")
-        from personal_health import get_user_health_history 
 
     while True:
 # Gives options (1-4) to decide what option the user wants
