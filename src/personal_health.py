@@ -73,7 +73,7 @@ class PersonalHealth:
       if new_weight_kg <= 0:
           raise ValueError("Weight must be above 0.")
       self.weight_kg = new_weight_kg
-      self.bmi = round(weight_kg / ((height_cm / 100) ** 2), 2) # Calculates BMI
+      self.bmi = round(self.weight_kg / ((self.height_cm / 100) ** 2), 2) # Calculates BMI
       self.status = self.get_health_status() # Gives BMI based on user input
       self.recorded_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S") # Gives date and time
       print(f"Weight has been updated to {new_weight_kg} kg, Your BMI is now : {self.bmi}, status : {self.status}")
