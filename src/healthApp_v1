@@ -36,8 +36,7 @@ def meal_planning(username):
 
 
 def personal_health(username):
-    print("\n[Personal Health]")
-    def personal_health(username):
+ print("\n[Personal Health]")
         from personal_health import get_user_health_history 
 
     while True:
