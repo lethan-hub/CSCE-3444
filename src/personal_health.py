@@ -97,7 +97,6 @@ def get_user_health_history(username):
   return data.get(username, [])
 
 
-from personal_health_menu import personal_health
 
 if __name__ == "__main__":
   username = input("Enter your username: ").strip()
