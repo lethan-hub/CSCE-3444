@@ -7,8 +7,16 @@ WORKOUTS_FILE = 'workouts.json'
 def load_workouts():
     try:
         with open(WORKOUTS_FILE, "r") as file:
-            return json.load(file)
+            data = json.load(file)
+
+            if not isinstance(data, dict):
+                print("Invalid data format in workouts file. Initializing empty workouts.")
+                return {}
+            return data
     except FileNotFoundError:
+        return {}
+    except json.JSONDecodeError:
+        print("Error decoding JSON from workouts file. Initializing empty workouts.")
         return {}
 
 # Save workouts to file
@@ -74,7 +82,7 @@ def log_strength_workout(workouts_data, username, today):
 
     while True:
         exercise = input("Enter the exercise name (or 'done' to finish): ").strip()
-        if excercise.lower() == 'done':
+        if exercise.lower() == 'done':
             break
 
         try:
@@ -89,7 +97,7 @@ def log_strength_workout(workouts_data, username, today):
 
         workout_entry = {
             "category": "Strength",
-            "type": workouts_data,
+            "type": exercise,
             "sets": sets,
             "reps_per_set": reps,
             "weight": weight,
@@ -103,9 +111,12 @@ def log_strength_workout(workouts_data, username, today):
         print(f"Logged Strength: {sets}x{reps} @ {weight} lbs - Total Volume: {volume:.1f}\n")
 
         more = input("Log another exercise? (yes/no): ").strip().lower()
-        if more != 'yes':
+        if more == 'yes':
             break
-        print("Invalid input. Please enter 'yes' or 'no'.")
+        elif more == 'no':
+            return
+        else:
+            print("Invalid input. Please enter 'yes' or 'no'.")
 
 
 ''' **Main workouts function**
